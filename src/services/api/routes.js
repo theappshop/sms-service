@@ -10,7 +10,7 @@ NumberRoutes.init(router)
 router.get('/api', async (ctx) => {
   ctx.body = {
     status: 'success',
-    message: '@sms-service'
+    message: 'sms-service'
   }
 })
 
