@@ -7,10 +7,10 @@ const router = new Router()
 SMSRoutes.init(router)
 NumberRoutes.init(router)
 
-router.get('/', async (ctx) => {
+router.get('/api', async (ctx) => {
   ctx.body = {
     status: 'success',
-    message: '@sms sender'
+    message: '@sms-service'
   }
 })
 
