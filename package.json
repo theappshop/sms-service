@@ -1,14 +1,16 @@
 {
-  "name": "chilleo-backend",
+  "name": "sms-service",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "start": "babel-node ./src/index.js",
     "test": "PORT=2081 NODE_ENV=test babel-node ./node_modules/mocha/bin/_mocha --exit",
-    "build": "babel src -d lib --source-maps",
+    "build": "babel src -d lib --source-maps --copy-files",
+    "start:prod": "node ./lib/index.js",
     "knex": "babel-node node_modules/.bin/knex --knexfile=./src/db/knexfile.js",
+    "knex:prod": "node node_modules/.bin/knex --knexfile=./lib/db/knexfile.js",
     "db:migrate": "npm run migrate:rollback && npm run migrate:latest && npm run seed:run",
-    "docker:start": "npm run migrate:latest && npm run seed:run && npm start",
+    "db:prod": "npm run knex:prod migrate:rollback && npm run knex:prod migrate:latest && npm run knex:prod seed:run",
     "migrate:latest": "npm run knex migrate:latest",
     "migrate:rollback": "npm run knex migrate:rollback",
     "seed:run": "npm run knex seed:run"
@@ -16,24 +18,24 @@
   "keywords": [
     "backend",
     "sms",
-    "chilleo",
     "REST",
     "API"
   ],
-  "author": "Alexander Stepanov",
-  "homepage": "https://github.com/AppDevelopmentShop/chilleo-backend",
+  "author": "appshop",
+  "homepage": "https://github.com/AppDevelopmentShop/sms-service",
   "engines": {
-    "node": "10.1.0"
+    "node": "10.2.1"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com:AppDevelopmentShop/chilleo-backend.git"
+    "url": "git+ssh://git@github.com:AppDevelopmentShop/sms-service.git"
   },
   "devDependencies": {
     "@types/node": "^10.0.8",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.3",
+    "babel-plugin-transform-runtime": "^6.23.0",
     "babel-polyfill": "^6.26.0",
     "babel-preset-node8": "^1.2.0",
     "chai": "^4.1.2",
@@ -49,7 +51,6 @@
   },
   "dependencies": {
     "app-root-path": "^2.0.1",
-    "babel-plugin-transform-runtime": "^6.23.0",
     "ioredis": "^3.2.2",
     "joi": "^13.3.0",
     "knex": "^0.14.6",
