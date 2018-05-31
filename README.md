@@ -8,6 +8,4 @@ Used technology:
 - Mocha & Chai (TDD)
 
 API Documentation:
-https://app.swaggerhub.com/apis/vaiol/?/
-
-
+https://app.swaggerhub.com/apis/vaiol/sms-service/
