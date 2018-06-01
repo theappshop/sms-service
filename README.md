@@ -1,11 +1,10 @@
 # Application to send SMS via Twillio service.
 ### TODO
-- Brute force protect
-means it will possible to send message to one number not more often than in a certain period. Env setup should be provided.
+- Brute force protect, it means it will possible to send message to one number not more often than in a certain period.
+Env setup should be provided.
 - Validate number endpoint
 - Webhook endpoint for Twilio
-- history url
-it could be REST GET endpoint or graphql
+- history url, it could be REST GET endpoint or graphql
 - UI for managing numbers (for huge amount of message > 250 per day)
 
 ### Description
