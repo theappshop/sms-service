@@ -56,11 +56,10 @@ If you want reinitialize your DB npm run db:migrate:prod command available.
 ``` sudo docker exec -it [ID] tail -f logs/error.log ```    
 [ID] - id or name container
 
-### github
-[Github Repo](https://github.com/AppDevelopmentShop/sms-service/)
-
-### swaggerhub
-[Swagger API Documentation](https://app.swaggerhub.com/apis/vaiol/sms-service/)
+### URLs
+[Github Repo](https://github.com/AppDevelopmentShop/sms-service/)  
+[Swagger API Documentation](https://app.swaggerhub.com/apis/vaiol/sms-service/)  
+[Docker Cloud Repo](https://hub.docker.com/r/appshop/sms-service/)  
 
 ### docker-compose
 Example part of valid docker compose file for sms service:
