@@ -6,6 +6,7 @@ Env setup should be provided.
 - Webhook endpoint for Twilio
 - history url, it could be REST GET endpoint or graphql
 - UI for managing numbers (for huge amount of message > 250 per day)
+- history free mode (without DBs connected)
 
 ### Description
 Sms-service used postgres and redis to store data.
