@@ -4,16 +4,17 @@
   "private": true,
   "scripts": {
     "start": "babel-node ./src/index.js",
-    "test": "PORT=2081 NODE_ENV=test babel-node ./node_modules/mocha/bin/_mocha --exit",
-    "build": "babel src -d lib --source-maps --copy-files",
-    "start:prod": "node ./lib/index.js",
+    "test": "NODE_ENV=test PORT=2132 babel-node ./node_modules/mocha/bin/_mocha --exit",
+    "build": "babel src --out-dir lib/src --source-maps --copy-files",
     "knex": "babel-node node_modules/.bin/knex --knexfile=./src/db/knexfile.js",
-    "knex:prod": "node node_modules/.bin/knex --knexfile=./lib/db/knexfile.js",
-    "db:migrate": "npm run migrate:rollback && npm run migrate:latest && npm run seed:run",
+    "db": "npm run knex migrate:rollback && npm run knex migrate:latest && npm run knex seed:run",
+    "db+start": "npm run knex migrate:latest && npm run knex seed:run && npm start",
+    "knex:prod": "node node_modules/.bin/knex --knexfile=./lib/src/db/knexfile.js",
     "db:prod": "npm run knex:prod migrate:rollback && npm run knex:prod migrate:latest && npm run knex:prod seed:run",
-    "migrate:latest": "npm run knex migrate:latest",
-    "migrate:rollback": "npm run knex migrate:rollback",
-    "seed:run": "npm run knex seed:run"
+    "start:prod": "node ./lib/src/index.js",
+    "db+start:prod": "npm run knex:prod migrate:latest && npm run knex:prod seed:run && npm run start:prod",
+    "build:test": "babel test --out-dir lib/test --source-maps --copy-files",
+    "start:test": "NODE_ENV=test node ./node_modules/mocha/bin/_mocha --exit lib/test"
   },
   "keywords": [
     "backend",
